@@ -6,15 +6,14 @@ services:
     image: php:7.4-apache
     container_name: ${NAME}
     build: .
-    ports:
-      - "8080:80"
+
     networks:
-        - web
+      - web
     labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.${NAME}.rule=Host(`${NAME}.jrcandev.netlib.re`)"
-        - "traefik.http.routers.${NAME}.entrypoints=websecure"
-        - "traefik.http.routers.${NAME}.tls.certresolver=lets-encrypt"
+      - "traefik.enable=true"
+      - "traefik.http.routers.${NAME}.rule=Host(`${NAME}.jrcandev.netlib.re`)"
+      - "traefik.http.routers.${NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${NAME}.tls.certresolver=lets-encrypt"
     restart: always
 
 volumes:
